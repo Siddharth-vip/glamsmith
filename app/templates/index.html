@@ -1,0 +1,968 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar-header">
+    <nav class="navbar" id="mainNavbar">
+        <div class="logo">
+            <a href="#home">GLAM<span>SMITH</span></a>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="nav-item active">Home</a></li>
+            <li><a href="#about" class="nav-item">About</a></li>
+            <li><a href="#services" class="nav-item">Services</a></li>
+            <li><a href="#pricing" class="nav-item">Pricing</a></li>
+            <li><a href="#reviews" class="nav-item">Reviews</a></li>
+            <li><a href="#contact" class="nav-item">Contact</a></li>
+            <li><a href="#location" class="nav-item">Location</a></li>
+        </ul>
+
+        <div class="nav-socials">
+            <a href="https://www.instagram.com/glamsmith_unisexsalon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/19ZZCGz4F7/" target="_blank" aria-label="Facebook" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://wa.me/917550363163" target="_blank" aria-label="WhatsApp" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero" id="home">
+
+    <!-- Layer 1: Gold Dust Particles Canvas -->
+    <canvas id="particleCanvas" class="hero-particles-canvas"></canvas>
+
+    <!-- Layer 2: Background Salon Architecture -->
+    <div class="hero-bg" id="heroBg" style="background-image: url('{{ url_for('static', path='images/hero/background.jpg') }}');"></div>
+
+    <!-- Layer 3: Dark Luxury Vignette & Radial Lighting -->
+    <div class="hero-overlay"></div>
+
+    <!-- Layer 4: Gold Ribbon & Glow Lighting behind Model -->
+    <div class="gold-ambient-glow" id="goldGlow"></div>
+    <img src="{{ url_for('static', path='images/hero/gold-lights.png') }}" class="gold-lights-img" id="goldLightsImg" alt="Gold Ambient Lights">
+
+    <!-- Layer 5: Hero Content Layout -->
+    <div class="hero-container">
+
+        <!-- LEFT COLUMN: Typography & Actions -->
+        <div class="hero-left" id="heroLeft">
+            <div class="hero-subtitle-wrap">
+                <span class="gold-line-accent"></span>
+                <span class="hero-subtitle">LUXURY UNISEX SALON</span>
+            </div>
+
+            <h1 class="hero-title" id="heroTitle">
+                <span class="title-line"><span class="word white-text">Your</span> <span class="word white-text">Hair</span></span>
+                <span class="title-line"><span class="word gold-gradient-text shimmer-effect">Our</span> <span class="word gold-gradient-text shimmer-effect">Passion</span></span>
+            </h1>
+
+            <div class="diamond-divider">
+                <span class="d-line"></span>
+                <span class="d-sparkle">✦</span>
+                <span class="d-line"></span>
+            </div>
+
+            <p class="hero-description" id="heroDesc">
+                Experience premium hair styling, colouring, keratin, hair spa and personalised consultation in a luxurious atmosphere.
+            </p>
+
+            <div class="hero-actions" id="heroActions">
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-gold btn-magnetic" id="bookBtn">
+                    <span class="btn-text">Book Appointment</span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                    <span class="btn-ripple"></span>
+                </a>
+
+                <a href="#services" class="btn btn-outline btn-magnetic" id="exploreBtn">
+                    <span class="btn-text">Explore Services</span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                    <span class="btn-ripple"></span>
+                </a>
+            </div>
+
+            <!-- Animated Statistics -->
+            <div class="hero-stats" id="heroStats">
+                <div class="stat-card">
+                    <div class="stat-number-wrap">
+                        <span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span>
+                    </div>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number-wrap">
+                        <span class="stat-number" data-target="200">0</span><span class="stat-plus">+</span>
+                    </div>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number-wrap">
+                        <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+                    </div>
+                    <span class="stat-label">Premium Services</span>
+                </div>
+            </div>
+
+            <!-- Scroll Down Mouse Indicator -->
+            <div class="scroll-indicator">
+                <div class="mouse-icon">
+                    <span class="mouse-wheel"></span>
+                </div>
+                <span class="scroll-text">Scroll to explore</span>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: 3D Model Image -->
+        <div class="hero-right" id="heroRight">
+            <div class="model-frame" id="modelFrame">
+                <img src="{{ url_for('static', path='images/hero/model.png') }}" alt="GLAMSMITH Luxury Hair Model" class="hero-model" id="heroModel">
+                <div class="model-gold-halo"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Layer 6: Floating Glassmorphism Card (Overlapping bottom right) -->
+    <div class="glass-card-floating" id="glassCardFloating" data-tilt data-tilt-max="8" data-tilt-speed="1000" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="glass-card-inner">
+            <div class="glass-feature-item">
+                <div class="glass-icon-box">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div class="glass-feature-content">
+                    <h3>Premium Products</h3>
+                    <p>We use world-class products for the best results.</p>
+                </div>
+            </div>
+
+            <div class="glass-feature-item">
+                <div class="glass-icon-box">
+                    <i class="fa-solid fa-scissors"></i>
+                </div>
+                <div class="glass-feature-content">
+                    <h3>Expert Stylists</h3>
+                    <p>Trained professionals dedicated to your perfect look.</p>
+                </div>
+            </div>
+
+            <div class="glass-feature-item">
+                <div class="glass-icon-box">
+                    <div class="custom-sparkle-icon">✨</div>
+                </div>
+                <div class="glass-feature-content">
+                    <h3>Luxury Experience</h3>
+                    <p>Relax in a premium ambience with top notch service.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-pagination">
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+</section>
+
+<!-- ================= NON-COPYRIGHTED BRAND MARQUEE ================= -->
+<section class="brand-marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-content">
+            <span>HAUTE COIFFURE ATELIER</span>
+            <span class="sep">✦</span>
+            <span>SILK & KERATIN THERAPY</span>
+            <span class="sep">✦</span>
+            <span>RESTORATIVE HAIR SPA</span>
+            <span class="sep">✦</span>
+            <span>PRECISION GEOMETRY STYLING</span>
+            <span class="sep">✦</span>
+            <span>HYDRA FACIAL ATELIER</span>
+            <span class="sep">✦</span>
+            <span>HOLISTIC CUPPING WELLNESS</span>
+            <span class="sep">✦</span>
+            <span>BEARD & GROOMING ARTISTRY</span>
+            <span class="sep">✦</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+            <span>HAUTE COIFFURE ATELIER</span>
+            <span class="sep">✦</span>
+            <span>SILK & KERATIN THERAPY</span>
+            <span class="sep">✦</span>
+            <span>RESTORATIVE HAIR SPA</span>
+            <span class="sep">✦</span>
+            <span>PRECISION GEOMETRY STYLING</span>
+            <span class="sep">✦</span>
+            <span>HYDRA FACIAL ATELIER</span>
+            <span class="sep">✦</span>
+            <span>HOLISTIC CUPPING WELLNESS</span>
+            <span class="sep">✦</span>
+            <span>BEARD & GROOMING ARTISTRY</span>
+            <span class="sep">✦</span>
+        </div>
+    </div>
+</section>
+
+<!-- ================= ABOUT / EXPERIENCE SECTION ================= -->
+<section class="section-about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image-wrap tilt-card" data-tilt data-tilt-max="10">
+                <div class="about-img-box">
+                    <img src="{{ url_for('static', path='images/hero/background.jpg') }}" alt="GLAMSMITH Luxury Salon Interior">
+                    <div class="about-img-badge">
+                        <span class="badge-title">GLAMSMITH ATELIER</span>
+                        <span class="badge-sub">Craftsmanship & Elegance</span>
+                    </div>
+                </div>
+                <div class="about-gold-border"></div>
+            </div>
+
+            <div class="about-content">
+                <span class="section-tag">THE GLAMSMITH STANDARD</span>
+                <h2 class="section-title">Where Hair Artistry Meets Haute Couture Elegance</h2>
+                <p class="section-desc">
+                    At GLAMSMITH, we consider hair styling and personal grooming to be an intricate sculpture of identity. Our unisex studio combines bespoke consultation, precision geometry, and organic luxury treatments to yield a look that turns heads and commands reverence.
+                </p>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="h-icon"><i class="fa-solid fa-gem"></i></div>
+                        <div class="h-text">
+                            <h4>Bespoke Consultations</h4>
+                            <p>Every strand is analyzed for texture, facial symmetry, and lifestyle harmony.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="h-icon"><i class="fa-solid fa-droplet"></i></div>
+                        <div class="h-text">
+                            <h4>Gold & Silk Hair Spa</h4>
+                            <p>Deep restorative elixirs infused with natural proteins and micro-nutrients.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-btn-wrap">
+                    <a href="#services" class="btn btn-gold btn-magnetic">
+                        <span class="btn-text">Discover Our Atelier</span>
+                        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= SERVICES SECTION ================= -->
+<section class="section-services" id="services">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-tag">COMPREHENSIVE MENU</span>
+            <h2 class="section-title">Bespoke Salon & Wellness Services</h2>
+            <div class="diamond-divider justify-center">
+                <span class="d-line"></span>
+                <span class="d-sparkle">✦</span>
+                <span class="d-line"></span>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="service-tabs">
+            <button class="tab-btn active" data-filter="all">All Services</button>
+            <button class="tab-btn" data-filter="hair">Hair & Styling</button>
+            <button class="tab-btn" data-filter="beard">Men's & Grooming</button>
+            <button class="tab-btn" data-filter="skincare">Facials & Waxing</button>
+            <button class="tab-btn" data-filter="wellness">Spa & Cupping</button>
+        </div>
+
+        <div class="services-grid-all">
+            <!-- Hair & Styling -->
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-scissors"></i></div>
+                <h3>Haircut</h3>
+                <p>Precision custom hair sculpting tailored to complement your facial structure.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-palette"></i></div>
+                <h3>Hair colouring</h3>
+                <p>Multi-dimensional rich permanent and glossing hair hues tailored to your style.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h3>Hairstyling</h3>
+                <p>Bespoke blow-drys and high-fashion event styling for effortlessly voluminous tresses.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-crown"></i></div>
+                <h3>Bridal hair</h3>
+                <p>Intricate couture bridal updos and wedding day hair artistry for brides and bridesmaids.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-child"></i></div>
+                <h3>Children's cuts</h3>
+                <p>Gentle, patient, and stylish haircuts designed specifically for young ones.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-gem"></i></div>
+                <h3>Hair extensions</h3>
+                <p>Premium seamless volume and length enhancements using natural human hair extensions.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-minus"></i></div>
+                <h3>Hair straightening</h3>
+                <p>Silky smooth straight finish with long-lasting humidity resistance and light reflection.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Keratin treatments</h3>
+                <p>Deep protein treatment sealing cuticles to eliminate 100% frizz with obsidian shine.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-pump-soap"></i></div>
+                <h3>Shampoo & conditioning</h3>
+                <p>Restorative scalp cleansing and deep nutrient-infused conditioning treatment.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-vial"></i></div>
+                <h3>Botox Hair Treatment</h3>
+                <p>Advanced hair fiber filler restoring structural strength, elasticity, and youthful radiance.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                <h3>Long haircut</h3>
+                <p>Elegant texturizing, layering, and split-end trimming for graceful long tresses.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-person-military-pointing"></i></div>
+                <h3>Military haircut</h3>
+                <p>Ultra-clean, sharp, low-maintenance fade cuts executed with razor precision.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-bezier-curve"></i></div>
+                <h3>Razor cut</h3>
+                <p>Feathered razor technique delivering soft texture, volume, and natural movement.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-scissors"></i></div>
+                <h3>Scissor cut</h3>
+                <p>Classic hand-scissored haircut tailored to individual head shape and growth patterns.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="hair" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>Hair shape-up</h3>
+                <p>Crisp line alignment and structural outline shaping around temples and neckline.</p>
+            </div>
+
+            <!-- Men's & Grooming -->
+            <div class="service-item-box tilt-card" data-category="beard" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+                <h3>Beard trim</h3>
+                <p>Sculpted facial hair trimming, line defining, and length balancing.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="beard" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-droplet"></i></div>
+                <h3>Beard conditioning</h3>
+                <p>Warm herbal oil and hydration mask softening coarse facial hair and soothing skin.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="beard" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-brush"></i></div>
+                <h3>Beard dyeing</h3>
+                <p>Natural gray coverage and shade enrichment for a cohesive, youthful beard appearance.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="beard" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <h3>Beard maintenance</h3>
+                <p>Comprehensive beard therapy including wash, steam, sculpting, and botanical oil massage.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="beard" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-razor"></i></div>
+                <h3>Shaving & Shave</h3>
+                <p>Traditional hot-towel straight-razor shave leaving skin smooth and deeply hydrated.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="beard" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-eye"></i></div>
+                <h3>Eyebrow trimming</h3>
+                <p>Subtle, clean brow shaping to frame eyes and accentuate facial harmony.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="beard" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-hand"></i></div>
+                <h3>Men's manicures</h3>
+                <p>Professional hand cleaning, nail shaping, cuticle refinement, and palm hydration.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="beard" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <h3>Grooming</h3>
+                <p>Complete head-to-toe refinement package tailored for the modern gentleman.</p>
+            </div>
+
+            <!-- Facials & Skincare -->
+            <div class="service-item-box tilt-card" data-category="skincare" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-sparkles"></i></div>
+                <h3>Facial</h3>
+                <p>Custom deep pore cleansing, gentle exfoliation, and targeted collagen mask.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="skincare" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-water"></i></div>
+                <h3>Hydra facial</h3>
+                <p>Advanced vortex-suction skin purification and deep hyaluronic serum infusion.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="skincare" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-spa"></i></div>
+                <h3>Body waxing & Waxing</h3>
+                <p>Smooth hair removal using premium low-temperature herbal wax gentle on skin.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="skincare" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-wand-magic"></i></div>
+                <h3>Make-up services</h3>
+                <p>High-definition evening, bridal, and camera-ready glam makeup artistry.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="skincare" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+                <h3>Pedicure</h3>
+                <p>Therapeutic foot bath, callus removal, scrub, nail shaping, and foot massage.</p>
+            </div>
+
+            <!-- Wellness & Cupping Therapies -->
+            <div class="service-item-box tilt-card" data-category="wellness" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-mattress-pillow"></i></div>
+                <h3>Massage Cupping & Fire Cupping</h3>
+                <p>Targeted suction therapy relieving chronic neck, shoulder, and spinal muscle pain.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="wellness" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                <h3>Full Body Massage Cupping</h3>
+                <p>Therapeutic deep-tissue cupping covering neck, hands, shoulders, spine, hips, and legs.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="wellness" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-circle-notch"></i></div>
+                <h3>Weight Loss Cupping</h3>
+                <p>Metabolic stimulation fire cupping treatment aimed at tissue firming and detox.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="wellness" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Vaccum Facial & Derma Planning</h3>
+                <p>UV LED light vacuum facial combined with dermaplaning and chin reduction sculpting.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="wellness" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-moon"></i></div>
+                <h3>Sleeping headtherapy massage</h3>
+                <p>Tranquil scalp, neck, and temple massage inducing deep sensory relaxation and sleep ease.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="wellness" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-brain"></i></div>
+                <h3>Head and Face Acu Massage</h3>
+                <p>Targeted pressure-point therapy stimulating facial circulation and relieving tension headaches.</p>
+            </div>
+            <div class="service-item-box tilt-card" data-category="wellness" data-tilt>
+                <div class="s-icon"><i class="fa-solid fa-footprints"></i></div>
+                <h3>Foot reflexology</h3>
+                <p>Reflexology pressure point stimulation on soles to restore body energy flow and alleviate stress.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PRICING & SPECIAL COMBOS ================= -->
+<section class="section-pricing" id="pricing">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-tag">MENU & PACKAGES</span>
+            <h2 class="section-title">Special Packages & Official Pricing</h2>
+            <div class="diamond-divider justify-center">
+                <span class="d-line"></span>
+                <span class="d-sparkle">✦</span>
+                <span class="d-line"></span>
+            </div>
+        </div>
+
+        <!-- Featured Special Combo -->
+        <div class="featured-combo-card glass-card-floating" style="position: relative; bottom: 0; right: 0; max-width: 100%; margin-bottom: 50px;">
+            <div class="combo-badge">HOT OFFER</div>
+            <div class="combo-info">
+                <h3>Hair Spa & Facial</h3>
+                <p class="combo-desc">Flat 20% off as per brochure • Deep restorative hair spa paired with glowing face treatment.</p>
+                <div class="combo-meta">
+                    <span class="meta-item"><i class="fa-regular fa-clock"></i> Duration: 60 mins</span>
+                    <span class="meta-price">Price: Rs. 299</span>
+                </div>
+            </div>
+            <a href="https://wa.me/917550363163" target="_blank" class="btn btn-gold">Select Combo</a>
+        </div>
+
+        <!-- Men Special Combos -->
+        <h3 class="category-heading"><i class="fa-solid fa-mars"></i> Men Special Combos</h3>
+        <div class="pricing-combos-grid">
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Hair Cut + Head Wash</h4>
+                <span class="sub-tag">Summer Special Combo</span>
+                <div class="combo-details">
+                    <span><i class="fa-regular fa-clock"></i> 45 mins</span>
+                    <strong class="price">Rs. 149</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Select</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Hair Cut + Beard Trim</h4>
+                <span class="sub-tag">Summer Special Combo</span>
+                <div class="combo-details">
+                    <span><i class="fa-regular fa-clock"></i> 45 mins</span>
+                    <strong class="price">Rs. 149</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Select</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Hair Cut + Head Massage</h4>
+                <span class="sub-tag">Summer Special Combo</span>
+                <div class="combo-details">
+                    <span><i class="fa-regular fa-clock"></i> 60 mins</span>
+                    <strong class="price">Rs. 179</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Select</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Face Detan</h4>
+                <span class="sub-tag">Summer Special Treatment</span>
+                <div class="combo-details">
+                    <span><i class="fa-regular fa-clock"></i> 40 mins</span>
+                    <strong class="price">Rs. 149</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Select</a>
+            </div>
+        </div>
+
+        <!-- Women Special Combos -->
+        <h3 class="category-heading" style="margin-top: 50px;"><i class="fa-solid fa-venus"></i> Women Special Combos</h3>
+        <div class="pricing-combos-grid">
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Eyebrow + Upper Lip</h4>
+                <span class="sub-tag">Summer Special Combo</span>
+                <div class="combo-details">
+                    <span><i class="fa-regular fa-clock"></i> 25 mins</span>
+                    <strong class="price">Rs. 99</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Select</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Eyebrow + Upper Lip + Forehead</h4>
+                <span class="sub-tag">Summer Special Combo</span>
+                <div class="combo-details">
+                    <span><i class="fa-regular fa-clock"></i> 35 mins</span>
+                    <strong class="price">Rs. 149</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Select</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Eyebrow + Upper Lip + Detan</h4>
+                <span class="sub-tag">Summer Special Combo</span>
+                <div class="combo-details">
+                    <span><i class="fa-regular fa-clock"></i> 45 mins</span>
+                    <strong class="price">Rs. 199</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Select</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Face / Hand Detan</h4>
+                <span class="sub-tag">Summer Special Treatment</span>
+                <div class="combo-details">
+                    <span><i class="fa-regular fa-clock"></i> 40 mins</span>
+                    <strong class="price">Rs. 149</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Select</a>
+            </div>
+        </div>
+
+        <!-- CUPPING THERAPY & PAIN RELIEF PRICING -->
+        <h3 class="category-heading" style="margin-top: 50px;"><i class="fa-solid fa-heart-pulse"></i> Cupping Therapy & Pain Relief</h3>
+        <div class="pricing-combos-grid">
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Neck Massage</h4>
+                <span class="sub-tag">Pain Relief Therapy</span>
+                <div class="combo-details">
+                    <span>Targeted Relief</span>
+                    <strong class="price">Rs. 250</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Massage Cupping (Basic)</h4>
+                <span class="sub-tag">Pain Relief Therapy</span>
+                <div class="combo-details">
+                    <span>Suction Therapy</span>
+                    <strong class="price">Rs. 350</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Fire Cupping</h4>
+                <span class="sub-tag">Thermal Relief Therapy</span>
+                <div class="combo-details">
+                    <span>Fire Suction</span>
+                    <strong class="price">Rs. 400</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Fire Cupping (With Needling)</h4>
+                <span class="sub-tag">Advanced Pain Relief</span>
+                <div class="combo-details">
+                    <span>Acupuncture + Fire</span>
+                    <strong class="price">Rs. 500</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Full Body Massage Cupping</h4>
+                <span class="sub-tag">Spinal, Hip & Leg</span>
+                <div class="combo-details">
+                    <span>Deep Relief</span>
+                    <strong class="price">Rs. 700</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Full Body Massage Cupping (Complete)</h4>
+                <span class="sub-tag">Neck, Hand, Shoulder, Spinal, Hip & Leg</span>
+                <div class="combo-details">
+                    <span>Complete Body Detox</span>
+                    <strong class="price">Rs. 1000</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Breast Cupping Therapy</h4>
+                <span class="sub-tag">Enlargement, Sagging & Reduction</span>
+                <div class="combo-details">
+                    <span>Targeted Firming</span>
+                    <strong class="price">Rs. 350</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Weight Loss Cupping (Basic)</h4>
+                <span class="sub-tag">Body Contour Therapy</span>
+                <div class="combo-details">
+                    <span>Tissue Detox</span>
+                    <strong class="price">Rs. 400</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Weight Loss Cupping (Fire)</h4>
+                <span class="sub-tag">Metabolic Stimulation</span>
+                <div class="combo-details">
+                    <span>Fire Contour</span>
+                    <strong class="price">Rs. 500</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card featured-gold-box" data-tilt>
+                <h4>Weight Loss Package (Monthly)</h4>
+                <span class="sub-tag">12 Sittings + Complimentary Hijama</span>
+                <div class="combo-details">
+                    <span>3kg / 3inch reduction</span>
+                    <strong class="price">Rs. 6000</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-gold btn-sm">Claim Package</a>
+            </div>
+        </div>
+
+        <!-- FACIAL CUPPING PRICING -->
+        <h3 class="category-heading" style="margin-top: 50px;"><i class="fa-solid fa-sparkles"></i> Facial Cupping & Derma Planning</h3>
+        <div class="pricing-combos-grid">
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Vaccum Facial</h4>
+                <span class="sub-tag">UV LED Light + Face Mask</span>
+                <div class="combo-details">
+                    <span>Glow Treatment</span>
+                    <strong class="price">Rs. 1200</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Vaccum Facial with Derma Planning</h4>
+                <span class="sub-tag">Exfoliation & Silk Smooth</span>
+                <div class="combo-details">
+                    <span>Derma Sculpt</span>
+                    <strong class="price">Rs. 1400</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Vaccum Facial (Double Chin Reduction)</h4>
+                <span class="sub-tag">Jawline Contour & Tightening</span>
+                <div class="combo-details">
+                    <span>Jawline Sculpt</span>
+                    <strong class="price">Rs. 1400</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Vaccum Facial (Derma + Double Chin)</h4>
+                <span class="sub-tag">Combined Derma & Double Chin</span>
+                <div class="combo-details">
+                    <span>Ultimate Facial</span>
+                    <strong class="price">Rs. 1500</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+
+            <div class="combo-box tilt-card" data-tilt>
+                <h4>Vaccum Facial with Nano Infusion</h4>
+                <span class="sub-tag">Hyaluronic Serum Deep Penetration</span>
+                <div class="combo-details">
+                    <span>Nano Infusion</span>
+                    <strong class="price">Rs. 1500</strong>
+                </div>
+                <a href="https://wa.me/917550363163" target="_blank" class="btn btn-outline btn-sm">Book</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= GOOGLE REVIEWS SECTION ================= -->
+<section class="section-reviews" id="reviews">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-tag">VERIFIED GOOGLE REVIEWS</span>
+            <h2 class="section-title">What Our Valued Clients Say</h2>
+            <div class="diamond-divider justify-center">
+                <span class="d-line"></span>
+                <span class="d-sparkle">✦</span>
+                <span class="d-line"></span>
+            </div>
+        </div>
+
+        <!-- Google Rating Header Card -->
+        <div class="google-rating-banner tilt-card" data-tilt>
+            <div class="google-badge-box">
+                <i class="fa-brands fa-google google-icon"></i>
+                <div class="google-score">
+                    <span class="score-num">5.0</span>
+                    <div class="stars-row">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="google-info">
+                <h4>Glamsmith Unisex Salon</h4>
+                <p>5.0 Rating based on 41+ Verified Google Customer Reviews in Chennai</p>
+            </div>
+            <a href="https://www.google.com/search?q=glamsmith+unisex+salon+chennai#sv=CAESzQEKuQEStgEKd0FKaVQ0dEpEbmpzU19ISmxTZlMxRUlBc3RwMmI0UWJjc2d6RUVyMEVjaWQ2Zm5JU19jS1NhaWhjWmZTZlItUjZFanNKa0FfMkd1dlZLVFNiRnVIb09JS0s0YU1lUUdURFpLNGdWWXM5SlZ0Qjd2NXZtVkRwWmFzEhd0QmxoYW9MZEJJMlpzZU1QbWNlQTJRNBoiQURzcjlmUjdreUJnbmtCMmFKaTIzTU1UMXJZbFYzYWlyQRIEODA1MRoBMyoAMAA4AUAAGAAgz_b-gQJKAhAC" target="_blank" class="btn btn-gold btn-sm">
+                <i class="fa-brands fa-google"></i> View All Google Reviews
+            </a>
+        </div>
+
+        <!-- Review Dynamic Filter -->
+        <div class="review-filter-bar">
+            <button class="review-filter-btn active" data-stars="all">All Top Reviews</button>
+            <button class="review-filter-btn" data-stars="5">5 Star Reviews (★★★★★)</button>
+            <button class="review-filter-btn" data-stars="4">4+ Star Reviews (★★★★☆)</button>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card tilt-card" data-rating="5" data-tilt>
+                <div class="review-header">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Google Review</span>
+                </div>
+                <p class="review-quote">"Overall the price was so reasonable! The haircut and beard trim combo was executed flawlessly by senior stylists. Spotless salon ambiance in Chennai!"</p>
+                <div class="review-author">
+                    <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="author-info">
+                        <h4>Aravind Kumar</h4>
+                        <span>Google User • 2 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card tilt-card" data-rating="5" data-tilt>
+                <div class="review-header">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Google Review</span>
+                </div>
+                <p class="review-quote">"Took the Hair Spa & Facial combo for 299 Rs. Extremely relaxing head massage and face glow treatment. GLAMSMITH is definitely the top luxury unisex salon!"</p>
+                <div class="review-author">
+                    <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="author-info">
+                        <h4>Priya Sundaram</h4>
+                        <span>Google User • 1 month ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card tilt-card" data-rating="5" data-tilt>
+                <div class="review-header">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Google Review</span>
+                </div>
+                <p class="review-quote">"I had Hijama & Fire Cupping therapy here. Phenomenal pain relief for my chronic back stiffness. The staff is polite, professional, and well trained."</p>
+                <div class="review-author">
+                    <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="author-info">
+                        <h4>Karthik Raja</h4>
+                        <span>Google User • 3 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card tilt-card" data-rating="5" data-tilt>
+                <div class="review-header">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Google Review</span>
+                </div>
+                <p class="review-quote">"Excellent service for Keratin treatment and hydra facial! My hair feels so soft and shiny. Will definitely recommend Glamsmith Unisex Salon to everyone!"</p>
+                <div class="review-author">
+                    <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="author-info">
+                        <h4>Divya N.</h4>
+                        <span>Google User • 2 months ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CONTACT & VIP BOOKING ================= -->
+<section class="section-contact" id="contact">
+    <div class="container">
+        <div class="contact-box glass-card-floating">
+            <div class="contact-content">
+                <span class="section-tag">RESERVE YOUR APPOINTMENT</span>
+                <h2 class="section-title">Begin Your Glamsmith Transformation</h2>
+                <p>Step into pure luxury. Contact our private concierge or message us directly on WhatsApp to book your session.</p>
+                <div class="contact-actions">
+                    <a href="https://wa.me/917550363163" target="_blank" class="btn btn-gold btn-magnetic">
+                        <span class="btn-text">WhatsApp Booking Concierge</span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= DIRECTIONS & LOCATION SECTION ================= -->
+<section class="section-location" id="location">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-tag">VISIT OUR ATELIER</span>
+            <h2 class="section-title">Directions & Studio Location</h2>
+            <div class="diamond-divider justify-center">
+                <span class="d-line"></span>
+                <span class="d-sparkle">✦</span>
+                <span class="d-line"></span>
+            </div>
+        </div>
+
+        <div class="location-grid">
+            <div class="location-card tilt-card" data-tilt>
+                <div class="loc-header">
+                    <i class="fa-solid fa-location-dot loc-icon"></i>
+                    <h3>Glamsmith Unisex Salon</h3>
+                </div>
+                <p class="loc-address">
+                    105, Redhills Road, opposite to RC Apartment,<br>
+                    Chennai, Tamil Nadu 600099
+                </p>
+                <div class="loc-details">
+                    <div class="loc-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <span><strong>Hours:</strong> Open Daily • 8:00 AM - 9:00 PM</span>
+                    </div>
+                    <div class="loc-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span><strong>Phone:</strong> +91 75503 63163</span>
+                    </div>
+                </div>
+                <div class="loc-action">
+                    <a href="https://www.google.com/maps/place/Glamsmith+Unisex+Salon/@13.1368915,80.2081996,17z/data=!3m1!4b1!4m6!3m5!1s0x3a526568de6aa1b7:0xab588997fff072d2!8m2!3d13.1368915!4d80.2081996!16s%2Fg%2F11n56_47jg?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-gold btn-magnetic btn-full">
+                        <span class="btn-text">Get Directions on Google Maps</span>
+                        <span class="btn-icon"><i class="fa-solid fa-diamond-turn-right"></i></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Embedded Interactive Map -->
+            <div class="location-map-wrap tilt-card" data-tilt>
+                <iframe 
+                    title="Glamsmith Unisex Salon Location Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.65672288334!2d80.20562467590823!3d13.13689678719363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526568de6aa1b7%3A0xab588997fff072d2!2sGlamsmith%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1784749000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(1.2);" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="logo">
+                    <a href="#home">GLAM<span>SMITH</span></a>
+                </div>
+                <p>Haute Coiffure & Luxury Hair Studio. Redefining hair aesthetics with timeless sophistication.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#location">Directions</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-row">
+                    <a href="https://www.instagram.com/glamsmith_unisexsalon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/19ZZCGz4F7/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://wa.me/917550363163" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GLAMSMITH Luxury Hair Studio. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}
+
+

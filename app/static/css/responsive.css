@@ -1,0 +1,192 @@
+/* ==========================================================================
+   GLAMSMITH - RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Large Tablets & Small Laptops (max-width: 1200px) */
+@media screen and (max-width: 1200px) {
+    .navbar {
+        padding: 20px 40px;
+    }
+    
+    .hero-container {
+        padding: 0 40px;
+    }
+
+    .hero-title {
+        font-size: 68px;
+    }
+
+    .glass-card-floating {
+        right: 40px;
+        max-width: 480px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablets (max-width: 992px) */
+@media screen and (max-width: 992px) {
+    .navbar {
+        padding: 18px 30px;
+    }
+
+    .nav-links, .nav-socials {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(9, 9, 9, 0.98);
+        padding: 30px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        gap: 24px;
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .hero {
+        padding-top: 120px;
+        min-height: auto;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 24px;
+    }
+
+    .hero-left {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding-right: 0;
+        padding-bottom: 40px;
+    }
+
+    .hero-subtitle-wrap {
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 56px;
+    }
+
+    .diamond-divider {
+        margin: 20px auto;
+    }
+
+    .hero-description {
+        margin: 0 auto 30px auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .scroll-indicator {
+        justify-content: center;
+    }
+
+    .hero-right {
+        flex: 1 1 100%;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .model-frame {
+        max-width: 450px;
+    }
+
+    .glass-card-floating {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 40px auto 0 auto;
+        max-width: 100%;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .hero-title {
+        font-size: 44px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .stat-number-wrap {
+        font-size: 32px;
+    }
+
+    .glass-card-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 34px;
+    }
+}
+
+/* Small Phones (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .logo a {
+        font-size: 24px;
+    }
+
+    .glass-card-floating {
+        padding: 20px;
+    }
+}

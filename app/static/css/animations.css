@@ -1,0 +1,69 @@
+/* ==========================================================================
+   GLAMSMITH - KEYFRAME ANIMATIONS & DECORATIVE EFFECTS
+   ========================================================================== */
+
+/* Continuous Floating Animation for Glass Cards */
+@keyframes floatContinuous {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-14px) rotate(0.5deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+.float-animation {
+    animation: floatContinuous 6s ease-in-out infinite;
+}
+
+/* Ambient Gold Ambient Pulse */
+@keyframes goldPulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.2;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.35;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.2;
+    }
+}
+
+/* Shimmer Light Flare */
+@keyframes shimmerGlow {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Ripple Click Animation for Luxury Buttons */
+.btn-ripple-active {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: rippleExpand 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleExpand {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* GSAP Reveal State initial classes */
+.gsap-reveal-hidden {
+    opacity: 0;
+    visibility: hidden;
+}

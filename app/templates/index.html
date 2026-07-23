@@ -28,6 +28,7 @@
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
             <span></span>
             <span></span>
+            
             <span></span>
         </button>
     </nav>
@@ -121,56 +122,65 @@
 
         <!-- RIGHT COLUMN: 3D Model Image -->
         <div class="hero-right" id="heroRight">
-            <div class="model-frame" id="modelFrame">
-                <img src="{{ url_for('static', path='images/hero/model.png') }}" alt="GLAMSMITH Luxury Hair Model" class="hero-model" id="heroModel">
-                <div class="model-gold-halo"></div>
-            </div>
-        </div>
-
+    <div class="model-frame" id="modelFrame">
+        <img src="{{ url_for('static', path='images/hero/model.png') }}"
+             alt="GLAMSMITH Luxury Hair Model"
+             class="hero-model"
+             id="heroModel">
+        <div class="model-gold-halo"></div>
     </div>
 
-    <!-- Layer 6: Floating Glassmorphism Card (Overlapping bottom right) -->
-    <div class="glass-card-floating" id="glassCardFloating" data-tilt data-tilt-max="8" data-tilt-speed="1000" data-tilt-glare data-tilt-max-glare="0.25">
-        <div class="glass-card-inner">
-            <div class="glass-feature-item">
-                <div class="glass-icon-box">
-                    <i class="fa-solid fa-crown"></i>
-                </div>
-                <div class="glass-feature-content">
-                    <h3>Premium Products</h3>
-                    <p>We use world-class products for the best results.</p>
-                </div>
-            </div>
 
-            <div class="glass-feature-item">
-                <div class="glass-icon-box">
-                    <i class="fa-solid fa-scissors"></i>
-                </div>
-                <div class="glass-feature-content">
-                    <h3>Expert Stylists</h3>
-                    <p>Trained professionals dedicated to your perfect look.</p>
-                </div>
-            </div>
+<!-- Layer 6: Floating Glassmorphism Card -->
+<div class="glass-card-floating"
+     id="glassCardFloating"
+     data-tilt
+     data-tilt-max="8"
+     data-tilt-speed="1000"
+     data-tilt-glare
+     data-tilt-max-glare="0.25">
 
-            <div class="glass-feature-item">
-                <div class="glass-icon-box">
-                    <div class="custom-sparkle-icon">✨</div>
-                </div>
-                <div class="glass-feature-content">
-                    <h3>Luxury Experience</h3>
-                    <p>Relax in a premium ambience with top notch service.</p>
-                </div>
+    <div class="glass-card-inner">
+        <div class="glass-feature-item">
+            <div class="glass-icon-box">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+            <div class="glass-feature-content">
+                <h3>Premium Products</h3>
+                <p>We use world-class products for the best results.</p>
             </div>
         </div>
 
-        <div class="glass-pagination">
-            <span class="dot"></span>
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+        <div class="glass-feature-item">
+            <div class="glass-icon-box">
+                <i class="fa-solid fa-scissors"></i>
+            </div>
+            <div class="glass-feature-content">
+                <h3>Expert Stylists</h3>
+                <p>Trained professionals dedicated to your perfect look.</p>
+            </div>
+        </div>
+
+        <div class="glass-feature-item">
+            <div class="glass-icon-box">
+                <div class="custom-sparkle-icon">✨</div>
+            </div>
+            <div class="glass-feature-content">
+                <h3>Luxury Experience</h3>
+                <p>Relax in a premium ambience with top notch service.</p>
+            </div>
         </div>
     </div>
 
+    <div class="glass-pagination">
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ================= NON-COPYRIGHTED BRAND MARQUEE ================= -->
@@ -482,7 +492,7 @@
         </div>
 
         <!-- Featured Special Combo -->
-        <div class="featured-combo-card glass-card-floating" style="position: relative; bottom: 0; right: 0; max-width: 100%; margin-bottom: 50px;">
+        <div class="featured-combo-card pricing-featured-card"></div>
             <div class="combo-badge">HOT OFFER</div>
             <div class="combo-info">
                 <h3>Hair Spa & Facial</h3>
@@ -965,4 +975,4 @@
 
 {% endblock %}
 
-
+

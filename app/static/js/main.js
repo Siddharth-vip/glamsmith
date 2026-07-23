@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 scrollTrigger: {
                     trigger: sec,
                     start: "top 80%",
-                    toggleActions: "play none none reverse"
+                    once: true
                 }
             }
         );
@@ -425,22 +425,58 @@ document.addEventListener("DOMContentLoaded", () => {
     const serviceBoxes = document.querySelectorAll(".service-item-box");
 
     tabBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            tabBtns.forEach((b) => b.classList.remove("active"));
-            btn.classList.add("active");
+    btn.addEventListener("click", () => {
 
-            const filter = btn.getAttribute("data-filter");
+        tabBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
 
-            serviceBoxes.forEach((box) => {
-                const category = box.getAttribute("data-category");
-                if (filter === "all" || category === filter) {
-                    gsap.to(box, { opacity: 1, scale: 1, display: "flex", duration: 0.4, ease: "power2.out" });
-                } else {
-                    gsap.to(box, { opacity: 0, scale: 0.9, display: "none", duration: 0.3, ease: "power2.in" });
-                }
-            });
+        const filter = btn.dataset.filter;
+
+        serviceBoxes.forEach((box) => {
+
+            const category = box.dataset.category;
+
+            if (filter === "all" || category === filter) {
+
+                box.style.display = "flex";
+
+                gsap.fromTo(
+                    box,
+                    {
+                        opacity: 0,
+                        y: 20,
+                        scale: 0.95
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    }
+                );
+
+            } else {
+
+                gsap.to(box, {
+                    opacity: 0,
+                    y: -20,
+                    scale: 0.95,
+                    duration: 0.25,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        box.style.display = "none";
+                    }
+                });
+
+            }
+
         });
+
+        ScrollTrigger.refresh();
+
     });
+});
 
     /* ------------------------------------------------------------------------
      * 8.2 REVIEWS STAR FILTERING
